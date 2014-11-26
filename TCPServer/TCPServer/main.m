@@ -68,13 +68,14 @@ int main(int argc, const char * argv[]){
     
     //创建一个Run Loop Socket源
     CFRunLoopSourceRef sourceRef = CFSocketCreateRunLoopSource(kCFAllocatorDefault, sserver, 0);
+    
     //socket源添加到Run Loop中
     CFRunLoopAddSource(CFRunLoopGetCurrent(), sourceRef, kCFRunLoopCommonModes);
     CFRelease(sourceRef);
     
     printf("Socket listening on port %d\n", PORT);
-    //运行Loop
     
+    //运行Loop
     CFRunLoopRun();
 }
 
@@ -92,6 +93,7 @@ void AcceptCallBack(
     CFWriteStreamRef writeStream = NULL;
     
     //data 参数含义是,如果回调类型是kCFSocketAcceptCallBack,data就是CFSocketNativeHandle类型的指针
+    CFSocketNativeHandle sock = * (CFSocketNativeHandle *) data;
     
     //创建读写的socket流
     CFStreamCreatePairWithSocket(kCFAllocatorDefault, sock, &readStream, &writeStream);
