@@ -10,6 +10,16 @@
 		0D50C87D1A24D22A00850E25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D50C87C1A24D22A00850E25 /* main.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0DFA78931A2CBD6000C4BC49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DFA788F1A2CBD6000C4BC49 /* TCPServer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA7D559F167B1FAF006C0481;
+			remoteInfo = TCPServer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		0D50C8771A24D22A00850E25 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -25,6 +35,7 @@
 /* Begin PBXFileReference section */
 		0D50C8791A24D22A00850E25 /* TCPServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TCPServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D50C87C1A24D22A00850E25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0DFA788F1A2CBD6000C4BC49 /* TCPServer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TCPServer.xcodeproj; path = "../../../../Downloads/代码/<iOS网络编程与云端应用最佳实践>源码/ch02/2.2 TCPSocket/TCPServer/TCPServer.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +54,7 @@
 			children = (
 				0D50C87B1A24D22A00850E25 /* TCPServer */,
 				0D50C87A1A24D22A00850E25 /* Products */,
+				0DFA788F1A2CBD6000C4BC49 /* TCPServer.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +72,14 @@
 				0D50C87C1A24D22A00850E25 /* main.m */,
 			);
 			path = TCPServer;
+			sourceTree = "<group>";
+		};
+		0DFA78901A2CBD6000C4BC49 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0DFA78941A2CBD6000C4BC49 /* TCPServer */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,12 +126,28 @@
 			mainGroup = 0D50C8701A24D22A00850E25;
 			productRefGroup = 0D50C87A1A24D22A00850E25 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0DFA78901A2CBD6000C4BC49 /* Products */;
+					ProjectRef = 0DFA788F1A2CBD6000C4BC49 /* TCPServer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0D50C8781A24D22A00850E25 /* TCPServer */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0DFA78941A2CBD6000C4BC49 /* TCPServer */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = TCPServer;
+			remoteRef = 0DFA78931A2CBD6000C4BC49 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0D50C8751A24D22A00850E25 /* Sources */ = {
@@ -232,6 +268,7 @@
 				0D50C8821A24D22A00850E25 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

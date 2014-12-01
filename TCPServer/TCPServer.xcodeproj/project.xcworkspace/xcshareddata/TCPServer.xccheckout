@@ -12,6 +12,8 @@
 	<dict>
 		<key>BD66383E592BBE31CF069BF19CF73A16CF60EF83</key>
 		<string>https://github.com/Fire2Sky/NetConnection.git</string>
+		<key>FE0B2285D4D8C8E48DD2128F9B483AE74635AEF2</key>
+		<string>https://github.com/eorient01/iosbook3_code.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TCPServer/TCPServer.xcodeproj</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>BD66383E592BBE31CF069BF19CF73A16CF60EF83</key>
 		<string>../../..</string>
+		<key>FE0B2285D4D8C8E48DD2128F9B483AE74635AEF2</key>
+		<string>../../../../../../Downloads/%E4%BB%A3%E7%A0%81/%3CiOS%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E4%BA%91%E7%AB%AF%E5%BA%94%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%3E%E6%BA%90%E7%A0%81</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Fire2Sky/NetConnection.git</string>
@@ -28,6 +32,14 @@
 	<string>BD66383E592BBE31CF069BF19CF73A16CF60EF83</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FE0B2285D4D8C8E48DD2128F9B483AE74635AEF2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>%3CiOS%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%8E%E4%BA%91%E7%AB%AF%E5%BA%94%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%3E%E6%BA%90%E7%A0%81</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

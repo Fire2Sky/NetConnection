@@ -5,8 +5,9 @@
 //  Created by 田野 on 14/11/25.
 //  Copyright (c) 2014年 Fire2Sky. All rights reserved.
 //
+//#import <Foundation/Foundation.h>
+#import <CoreFoundation/CoreFoundation.h>
 
-#import <Foundation/Foundation.h>
 
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -93,10 +94,65 @@ void AcceptCallBack(
     CFWriteStreamRef writeStream = NULL;
     
     //data 参数含义是,如果回调类型是kCFSocketAcceptCallBack,data就是CFSocketNativeHandle类型的指针
-    CFSocketNativeHandle sock = * (CFSocketNativeHandle *) data;
+    CFSocketNativeHandle sock = *(CFSocketNativeHandle *) data;
     
     //创建读写的socket流
     CFStreamCreatePairWithSocket(kCFAllocatorDefault, sock, &readStream, &writeStream);
+    
+    if (!readStream || !writeStream) {
+        close(sock);
+        fprintf(stderr, "CFStreamCreatePairWithSocket() 失败\n");
+        return;
+    
+    }
+    
+    CFStreamClientContext streamCtxt = {0, NULL, NULL, NULL, NULL};
+    //注册两种回调函数
+    CFReadStreamSetClient(readStream, kCFStreamEventHasBytesAvailable, ReadStreamClientCallBack, &streamCtxt);
+    CFWriteStreamSetClient(writeStream, kCFStreamEventCanAcceptBytes, WriteStreamClientCallBack, &streamCtxt);
+    //加入两种循环中
+    CFReadStreamScheduleWithRunLoop(readStream, CFRunLoopGetCurrent(), kCFRunLoopCommonModes);
+    CFWriteStreamScheduleWithRunLoop(writeStream, CFRunLoopGetCurrent(),kCFRunLoopCommonModes);
+    
+    CFReadStreamOpen(readStream);
+    CFWriteStreamOpen(writeStream);
+    
+    
+}
+
+
+//读取流操作 客户端有数据过来时候调用
+void ReadStreamClientCallBack(CFReadStreamRef stream, CFStreamEventType eventType, void* clientCallBackInfo){
+    UInt8 buff[255];
+    CFReadStreamRef inputStream = stream;
+    if (NULL != inputStream)
+    {
+        CFReadStreamRead(stream, buff, 255);
+        printf("接受数据:%s\n",buff);
+        CFReadStreamClose(inputStream);
+        CFReadStreamUnscheduleFromRunLoop(inputStream, CFRunLoopGetCurrent(), kCFRunLoopCommonModes);
+        inputStream = NULL;
+    }
+    
+}
+
+
+//写入流操作 客户端在读取数据时调用
+
+void WriteStreamClientCallBack(CFWriteStreamRef stream, CFStreamEventType eventType, void * clientCallBack)
+{
+    CFWriteStreamRef outputStream = stream;
+    //输出
+    UInt8 buff[] = "Hello Client!";
+    if(NULL != outputStream)
+    {
+        CFWriteStreamWrite(outputStream, buff, strlen((const char*)buff)+1);
+        //关闭输出流
+        CFWriteStreamClose(outputStream);
+        CFWriteStreamUnscheduleFromRunLoop(outputStream, CFRunLoopGetCurrent(), kCFRunLoopCommonModes);
+        outputStream = NULL;
+        
+    }
     
 }
 
@@ -107,3 +163,5 @@ void AcceptCallBack(
 //    }
 //    return 0;
 //}
+    
+
