@@ -24,4 +24,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)initNetworkCommunication
+{
+	CFReadStreamRef readStream;
+	CFWriteStreamRef writeStream;
+	CFStream   
+
+}
 @end
