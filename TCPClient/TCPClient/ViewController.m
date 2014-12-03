@@ -24,6 +24,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+<<<<<<< HEAD
 //初始化网络的方法
 - (void)initNetworkCommunication
 {
@@ -134,4 +135,14 @@
      
 }
 
+=======
+
+- (void)initNetworkCommunication
+{
+	CFReadStreamRef readStream;
+	CFWriteStreamRef writeStream;
+	CFStream   
+
+}
+>>>>>>> master
 @end
