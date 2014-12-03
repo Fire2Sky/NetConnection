@@ -30,8 +30,11 @@
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
     CFStreamCreatePairWithSocketToHost(NULL, (CFStringRef)@"192.168.1.103",PORT, &readStream, &writeStream);
-    _inputStream = (_bridge_transfer NSInputStream *)readStream;
-    _outputStream = (_bridge_transfer NSOutputStream *)writeStream;
+    
+    _inputStream = (__bridge_transfer NSInputStream *)readStream;
+    _outputStream = (__bridge_transfer NSOutputStream *)writeStream;
+    
+    
     [_inputStream setDelegate:self];
     [_outputStream setDelegate:self];
     
@@ -67,8 +70,10 @@
     {
         case NSStreamEventNone: event = @"NSStreamEventNone";
             break;
+        
         case NSStreamEventOpenCompleted: event = @"NSSteamEventOpenCompleted";
             break;
+        
         case NSStreamEventHasBytesAvailable: event = @"NSStreamEventHasBytesAvailable";
             if (flag == 1 && theStream == _inputStream)
             {
@@ -90,14 +95,43 @@
                 _message.text = resultstring;
             }
             break;
+        
         case NSStreamEventHasSpaceAvailable: event = @"NSStreamEventHasSpaceAvailable";
             if (flag == 0 && theStream == _outputStream)
             {
                 //输出
                 UInt8 buff[] = "Hello Server!";
-                
+                [_outputStream write: buff maxLength:strlen((const char *)buff)+ 1];
+                //关闭输出流
+                [_outputStream close];
                 
             }
+        case NSStreamEventEndEncountered: event = @"NSStreanEventEndEncountered";
+            NSLog(@"Error: %ld %@",(long)[[theStream streamError]code],[[theStream streamError] localizedDescription]);
+            break;
+        
+        default:
+            [self close];
+            event = @"Unknow";
+            break;
+    }
+    NSLog(@"event------- %@", event);
+    
+    
+}
+
+//[self close]的方法
+- (void)close
+{
+    [_outputStream close];
+    [_outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [_outputStream setDelegate:nil];
+    
+    [_inputStream close];
+    [_inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [_inputStream setDelegate:nil];
+    
+     
 }
 
 @end

@@ -412,6 +412,7 @@
 				0DFA788B1A25E66100C4BC49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0DFA788C1A25E66100C4BC49 /* Build configuration list for PBXNativeTarget "TCPClientTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +421,7 @@
 				0DFA788E1A25E66100C4BC49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
